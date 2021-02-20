@@ -1,19 +1,20 @@
 import { useState } from 'react';
+import PokemonDetails from './PokemonDetails';
 import useFetch from './useFetch';
 
 const Pokedex = () => {
   const [query, setQuery] = useState('');
   const [url, setUrl] = useState(null);
-  const { data: pokemon, isPending, error } = useFetch(null);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(query);
-    setUrl('https://pokeapi.co/api/v2/pokemon/' + { query });
-   
+    let param = query.toString()
+    setUrl('https://pokeapi.co/api/v2/pokemon/' + param);
   };
   
-
+  const { data: pokemon, isPending, error } = useFetch(url);
+  
   return (
     <div>
       <h2>Pokedex</h2>
@@ -25,13 +26,7 @@ const Pokedex = () => {
         />
         <button type="submit">Search</button>
       </form>
-      {pokemon && (
-        <div>
-          {pokemon.results.map((p) => (
-            <div>{p.name}</div>
-          ))}
-        </div>
-      )}
+     {pokemon && <PokemonDetails pokemon={pokemon}/>}
     </div>
   );
 };
