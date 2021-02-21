@@ -1,11 +1,15 @@
 import useFetch from './useFetch';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Pokedex = ({ url }) => {
   const { data: pokemon, isPending, error } = useFetch(url);
 
   const [shiny, setShiny] = useState(false);
 
+  useEffect(() => {
+    setShiny(false);
+  }, [url]);
+  
   const toggleShiny = () => {
     setShiny((prevShiny) => !prevShiny);
   };
@@ -43,7 +47,7 @@ const Pokedex = ({ url }) => {
             <div className="flex justify-between items-center">
               <div
                 onClick={toggleShiny}
-                className="md-light bg-gradient-to-r from-red-500 to-red-600 border-2 rounded-full"
+                className="md-light cursor-pointer bg-gradient-to-r from-red-500 to-red-600 border-2 rounded-full"
               ></div>
               <div className="flex py-1">
                 <div className="mr-2">
