@@ -4,13 +4,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-
 * {
   font-family: 'Quicksand', sans-serif;
 }
 
 .pageWrapper {
   background-image: url('./assets/pokemon-wallpaper.png');
+}
+
+.logo-header {
+  background-image: url('./assets/pokemon-logo.png');
 }
 
 .pokedex {
@@ -22,6 +25,12 @@
   width: 100%; /* or any custom size */
   height: 10rem;
   object-fit: contain;
+}
+
+.place-holder-ball {
+  background-image: url("./assets/pokeball.png");
+  width: 100%; /* or any custom size */
+  height: 10rem;
 }
 
 .lg-light {

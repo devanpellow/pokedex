@@ -1,31 +1,10 @@
-import { useState } from 'react';
-import PokemonDetails from './PokemonDetails';
 import useFetch from './useFetch';
 
-const Pokedex = () => {
-  const [query, setQuery] = useState('');
-  const [url, setUrl] = useState(null);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let param = query.toString().toLocaleLowerCase();
-    setUrl('https://pokeapi.co/api/v2/pokemon/' + param);
-  };
-
+const Pokedex = ({ url }) => {
   const { data: pokemon, isPending, error } = useFetch(url);
-  console.log(pokemon);
+
   return (
-    <div className="pageWrapper flex flex-col justify-around h-screen bg-cover bg-no-repeat">
-      <h2>Pokedex</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button type="submit">Search</button>
-        {/* <input type="Random" value={Math.floor(Math.random() * 932)+1}/> */}
-      </form>
+    <div className="flex flex-col justify-around">
       <div className="pokedex flex bg-gradient-to-r from-red-600 via-red-800 to-red-500 bg-red-600 mx-auto rounded-3xl shadow-inner border-l-8 border-b-4 border-red-900">
         <div className="left w-1/2 flex flex-col justify-between">
           <div className="bg-red-800 flex items-start py-4 border-b-4 border-red-900 pb-3 rounded-t-3xl">
@@ -44,11 +23,7 @@ const Pokedex = () => {
                 />
               )}
               {!pokemon && (
-                <img
-                  className="border-2 border-black rounded-md bg-gray-300"
-                  src="/Users/devansmacbook/code/pokedex/src/assets/pokeball.png"
-                  alt=""
-                />
+                <div className="place-holder-ball bg-white bg-contain bg-no-repeat bg-center border-2 border-black rounded-md"></div>
               )}
             </div>
             <div className="flex justify-between items-center">
@@ -99,6 +74,9 @@ const Pokedex = () => {
             )}
             {pokemon && (
               <div className="text-lg">{(pokemon.height / 10).toFixed(2)}m</div>
+            )}
+            {isPending && (
+              <div className="text-lg">Calculating...</div>
             )}
           </div>
           <div>
