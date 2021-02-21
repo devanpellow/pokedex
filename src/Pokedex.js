@@ -8,12 +8,12 @@ const Pokedex = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let param = query.toString();
+    let param = query.toString().toLocaleLowerCase();
     setUrl('https://pokeapi.co/api/v2/pokemon/' + param);
   };
 
   const { data: pokemon, isPending, error } = useFetch(url);
-
+  console.log(pokemon);
   return (
     <div className="pageWrapper flex flex-col justify-around h-screen bg-cover bg-no-repeat">
       <h2>Pokedex</h2>
@@ -25,7 +25,7 @@ const Pokedex = () => {
         />
         <button type="submit">Search</button>
       </form>
-      <div className="pokedex flex bg-gradient-to-r from-red-600 via-red-800 to-red-500 bg-red-600 mx-auto rounded-3xl shadow-inner border-l-8 border-b-8 border-red-900">
+      <div className="pokedex flex bg-gradient-to-r from-red-600 via-red-800 to-red-500 bg-red-600 mx-auto rounded-3xl shadow-inner border-l-8 border-b-4 border-red-900">
         <div className="left w-1/2 flex flex-col justify-between">
           <div className="bg-red-800 flex items-start py-4 border-b-4 border-red-900 pb-3 rounded-t-3xl">
             <div className="lg-light ml-4 mr-2 bg-gradient-to-r from-blue-200 to-blue-400 border-2 rounded-full"></div>
@@ -67,14 +67,23 @@ const Pokedex = () => {
             </div>
           </div>
           <div className="flex items-center justify-around">
-            <div className="lg-light ml-4 mr-2 bg-gradient-to-r from-blue-700 to-blue-900 rounded-full"></div>
+            <div className="lg-light ml-4 mr-2 bg-gradient-to-r from-blue-700 to-blue-900 rounded-full border-2 border-gray-600"></div>
             <div className="flex">
-              <div className="w-10 h-2 mx-2 rounded-full bg-gradient-to-r from-green-500 to-green-400"></div>
-              <div className="w-10 h-2 mx-2 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400"></div>
+              <div className="w-10 h-2 mx-2 rounded-full bg-gradient-to-r from-green-500 to-green-400 border border-gray-500"></div>
+              <div className="w-10 h-2 mx-2 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400 border border-gray-500"></div>
             </div>
           </div>
-          <div className="flex items-center justify-evenly">
-            <div className="h-12 w-20 bg-gradient-to-r from-green-500 to-green-400 rounded border-2 border-gray-400"></div>
+          <div className="flex items-center justify-evenly mb-4">
+            <div className="h-12 w-20 bg-gradient-to-r from-green-500 to-green-400 rounded border-2 border-gray-400 flex justify-center items-center">
+              {pokemon && (
+                <div className="text-xl">{pokemon.base_experience}</div>
+              )}
+            </div>
+            <div className="flex items-center">
+              <div className="w-6 h-6 bg-black border-l border-t border-b border-gray-500 shadow-lg"></div>
+              <div className="w-6 h-16 bg-black border-b border-t border-gray-500 shadow-lg"></div>
+              <div className="w-6 h-6 bg-black border-r border-t  border-b border-gray-500 shadow-lg"></div>
+            </div>
           </div>
         </div>
         <div className="w-8 flex flex-col justify-between border-l border-r border-red-900 shadow-2xl ">
@@ -82,7 +91,16 @@ const Pokedex = () => {
           <div className="h-20 w-full bg-gradient-to-r from-red-500 to-red-900 border-b-2 border-red-900"></div>
           <div className="h-16 w-full bg-gradient-to-r from-red-500 to-red-900 border-b-2 border-red-900"></div>
         </div>
-        <div className="right w-1/2"></div>
+        <div className="right w-1/2 flex justify-center">
+        <div className="h-1/4 w-3/4 bg-gradient-to-r from-green-500 to-green-400 rounded border-2 border-gray-400 flex flex-col justify-center items-center">
+              {pokemon && (
+                <div className="text-xl capitalize">{pokemon.name}</div>
+              )}
+              {pokemon && (
+                <div className="text-lg">{(pokemon.height/10).toFixed(2) }m</div>
+              )}
+            </div>
+        </div>
       </div>
     </div>
   );
