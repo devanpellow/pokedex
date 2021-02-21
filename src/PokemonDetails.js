@@ -4,6 +4,9 @@ const PokemonDetails = ({ pokemon }) => {
     <div>
       <div>{pokemon.name}</div>
       <img src={pokemon.sprites.other.dream_world.front_default} alt="" />
+
+      
+
     </div>
   );
 };

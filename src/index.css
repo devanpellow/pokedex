@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.pageWrapper {
+  background-image: url('./assets/pokemon-wallpaper.png');
+}
+
+.pokedex {
+  width: 700px;
+  height: 450px;
+}
+
+.pokedex img {
+  width: 100%; /* or any custom size */
+  height: 10rem;
+  object-fit: contain;
+}
+
+.lg-light {
+  height: 50px;
+  width: 50px;
+}
+.md-light {
+  height: 30px;
+  width: 30px;
+}
+.sm-light {
+  height: 20px;
+  width: 20px;
+}
