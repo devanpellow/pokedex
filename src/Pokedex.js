@@ -5,7 +5,6 @@ const Pokedex = ({ url }) => {
   const { data: pokemon, isPending, error } = useFetch(url);
 
   const [shiny, setShiny] = useState(false);
-  console.log(pokemon);
   useEffect(() => {
     setShiny(false);
   }, [url]);
