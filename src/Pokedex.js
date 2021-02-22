@@ -73,7 +73,7 @@ const Pokedex = ({ url }) => {
           <div className="flex items-center justify-evenly mb-4">
             <div className="h-12 w-20 bg-gradient-to-r from-green-500 to-green-400 rounded border-2 border-gray-400 flex justify-center items-center">
               {pokemon && (
-                <div className="text-xl">{pokemon.base_experience}</div>
+                <div className="text-xl">XP: {pokemon.base_experience}</div>
               )}
             </div>
             <div className="flex items-center">
