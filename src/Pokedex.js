@@ -91,10 +91,10 @@ const Pokedex = ({ url }) => {
         <div className="right w-1/2 flex flex-col justify-around items-center">
           <div className="h-1/4 w-3/4 bg-gradient-to-r from-green-500 to-green-400 rounded border-2 border-gray-400 flex flex-col justify-center items-center">
             {pokemon && (
-              <div className="text-xl capitalize">{pokemon.name}</div>
+              <div className="text-xl capitalize">Name: {pokemon.name}</div>
             )}
             {pokemon && (
-              <div className="text-lg">{(pokemon.height / 10).toFixed(2)}m</div>
+              <div className="text-lg">Height: {(pokemon.height / 10).toFixed(2)}m</div>
             )}
             {isPending && <div className="text-lg">Calculating...</div>}
           </div>
@@ -169,13 +169,13 @@ const Pokedex = ({ url }) => {
           </div>
           <div className="flex flex-row">
             <div className="h-8 w-20 mx-4 bg-gradient-to-r from-yellow-500 to-yellow-400 rounded border border-red-600 shadow-lg flex justify-center items-center">
-              {pokemon && (
-                <div className="text-xl">{pokemon.base_experience}</div>
-              )}
+            {pokemon && (
+              <div className="text-lg">{pokemon.types[0].type.name}</div>
+            )}
             </div>
             <div className="h-8 w-20 mx-4 bg-gradient-to-r from-yellow-500 to-yellow-400 rounded border border-red-600 shadow-lg flex justify-center items-center">
               {pokemon && (
-                <div className="text-xl">{pokemon.base_experience}</div>
+                <div className="text-xl">{pokemon.types[1] && (pokemon.types[1].type.name)}</div>
               )}
             </div>
           </div>
