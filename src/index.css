@@ -28,9 +28,18 @@
 }
 
 .place-holder-ball {
-  background-image: url("./assets/pokeball.png");
+  background-image: url('./assets/pokeball.png');
   width: 100%; /* or any custom size */
   height: 10rem;
+}
+
+.masterball {
+  background-image: url('./assets/masterball.png');
+  width: 100%; /* or any custom size */
+  height: 2rem;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .lg-light {
