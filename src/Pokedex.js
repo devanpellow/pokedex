@@ -25,13 +25,15 @@ const Pokedex = ({ url }) => {
           </div>
           <div className="flex flex-col w-3/4 bg-gray-300 mx-auto border border-gray-400 rounded-2xl pt-4 px-4">
             <div className="h-40">
-              {pokemon && pokemon.sprites.other.dream_world.front_default && !shiny && (
-                <img
-                  className="border-2 border-black rounded-md bg-white"
-                  src={pokemon.sprites.other.dream_world.front_default}
-                  alt=""
-                />
-              )}
+              {pokemon &&
+                pokemon.sprites.other.dream_world.front_default &&
+                !shiny && (
+                  <img
+                    className="border-2 border-black rounded-md bg-white"
+                    src={pokemon.sprites.other.dream_world.front_default}
+                    alt=""
+                  />
+                )}
               {pokemon && shiny && (
                 <img
                   className="border-2 border-black rounded-md bg-white"
@@ -59,6 +61,7 @@ const Pokedex = ({ url }) => {
                 onClick={toggleShiny}
                 className="md-light cursor-pointer bg-gradient-to-r from-red-500 to-red-600 border-2 rounded-full"
               ></div>
+
               <div className="flex py-1">
                 <div className="mr-2">
                   <div className="w-6 h-1 my-1 bg-gray-600"></div>
