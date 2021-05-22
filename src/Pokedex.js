@@ -41,7 +41,7 @@ const Pokedex = ({ url }) => {
                   alt=""
                 />
               )}
-              {pokemon && !pokemon.sprites.other.dream_world.front_default && (
+              {pokemon && !pokemon.sprites.other.dream_world.front_default && !shiny && (
                 <div className=" bg-white border-2 border-black rounded-md">
                   <img
                     className="border-2 border-black rounded-md bg-white"
